@@ -1,5 +1,17 @@
 # Gatsby Theme: Platinum
 
+Hello! Are you looking for a way to quickly get started with MDX and Gatsby, but don't want much else? Then this theme is for you!
+
+Platinum is the successor to my previous theme, `gatsby-theme-mdx-pages`. It's forked from the fantastic [Catalyst Core](https://github.com/ehowey/gatsby-theme-catalyst-core) theme by ehowey. Compared to Catalyst, Platinum removes many of the more "opinionated" features and implements some of its own.
+
+This theme has three main aims: 
+
+1. Programmatically make pages from MDX files, using frontmatter and directories to define templates.
+2. Implement `theme-ui`, a quality styling library that synergizes incredibly with MDX.
+3. Provide some optional components that are generally usable enough for most any website.
+
+Everything else is left up to the descendant project, whether directly or through other plugins.
+
 ## Quickstart
 
 ```sh
@@ -40,12 +52,12 @@ Defaults to "assets".
 ### indexName
 
 MDX pages with the same filename as this will have their resulting path set to their parent directory.  
-Defaults to 'index**.
+Defaults to "index".
 
 ### templateDir
 
 The directory where templates are stored, relative to your site's base directory.  
-Defaults to 'src/templates'
+Defaults to "src/templates"
 
 ### defaultTemplate
 
@@ -69,8 +81,17 @@ Use this if you want to use a different set of options for the plugin, or anothe
 
 ### getTemplate and makePagePath
 
-This function determines the template and resulting path for each MDX file's page, respectively.  
+These functions determine the template and resulting path for each MDX file's page, respectively.  
 Both functions' signatures are `({node, getNode, options})`, using the object spread syntax for arguments.
 
 `node` is the MDX node, `getNode` is a dependency injection of Gatsby's function of the same name so this function can access nodes related to the MDX node, like the File it comes from.  
 `options` is the whole options object provided to this theme. The default functions use this to access `directoryTemplates` and `indexName`, but the whole thing is provided so other implementations can use their own configuration schemas.
+
+## Roadmap
+
+While this theme is currently usable, it has a lot of room for improvement. Here's a non-exhaustive list of known areas:
+
+- Writing unit tests (I'm so sorry! Skipping them is such a bad habit!)
+- Better default template resolution (for example, child directories aren't recognized by `directoryTemplates`)
+- Less bland initial styles
+- Better documentation
