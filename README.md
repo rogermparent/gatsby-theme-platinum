@@ -24,7 +24,7 @@ gatsby develop
 
 ## Demo
 
-[https://gatsby-theme-platinum-demo.netlify.com/](https://gatsby-theme-platinum-demo.netlify.com/**
+[https://gatsby-theme-platinum-demo.netlify.com/](https://gatsby-theme-platinum-demo.netlify.com/)
 
 ## Templates
 
