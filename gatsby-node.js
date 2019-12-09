@@ -43,6 +43,12 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
         template: {
           type: `String`,
         },
+        frontmatter: {
+          type: `MdxFrontmatter`,
+          resolve(source, args, context, info){
+            return context.nodeModel.getNodeById({id: source.parent}).frontmatter;
+          }
+        }
       },
       interfaces: [`Node`, `ContentPage`],
     })
@@ -74,7 +80,6 @@ exports.onCreateNode = async (
     pagePath,
     template: getTemplate({node, getNode, options}),
     source___NODE: node.id,
-    frontmatter: node.frontmatter
   }
 
   const contentPageId = createNodeId(`${node.id} >>> ContentPage`)
