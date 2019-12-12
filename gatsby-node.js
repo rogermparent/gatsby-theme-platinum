@@ -56,7 +56,6 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
 }
 
 // Create fields for post slugs and source
-// This will change with schema customization with work
 exports.onCreateNode = async (
   { node, actions, getNode, createNodeId },
   themeOptions
