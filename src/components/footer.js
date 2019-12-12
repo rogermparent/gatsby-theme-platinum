@@ -7,15 +7,20 @@ const SiteFooter = () => {
     <footer
       sx={{
         variant: "styles.invert",
-        textAlign: 'center',
+        textAlign: "center",
         fontSize: 1,
       }}
       id="footer"
     >
-      <Container sx={{
-        p: 1,
-      }}>
-        <p>Shadow this footer in <code>src/gatsby-theme-platinum/components/footer.js</code>!</p>
+      <Container
+        sx={{
+          p: 1,
+        }}
+      >
+        <p>
+          Shadow this footer in{" "}
+          <code>src/gatsby-theme-platinum/components/footer.js</code>!
+        </p>
       </Container>
     </footer>
   )

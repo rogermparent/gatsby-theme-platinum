@@ -3,14 +3,14 @@ import { Layout } from "theme-ui"
 import { Global } from "@emotion/core"
 import StyleReset from "../utils/normalize-css"
 
-const BaseLayout = ({children}) => {
+const BaseLayout = ({ children }) => {
   return (
     <Layout>
       <Global
         styles={theme => ({
           body: {
-            minWidth: theme.sizes.minPageWidth
-          }
+            minWidth: theme.sizes.minPageWidth,
+          },
         })}
       />
       <StyleReset />

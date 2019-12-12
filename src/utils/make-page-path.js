@@ -1,24 +1,18 @@
-const path = require('path')
-const joinPath = (parts) => path.posix.join(
-  ...(parts.filter(Boolean))
-)
+const path = require("path")
+const joinPath = parts => path.posix.join(...parts.filter(Boolean))
 
-const makePagePath = ({ node, getNode, options: { indexName = 'index' } }) => {
+const makePagePath = ({ node, getNode, options: { indexName = "index" } }) => {
   if (node.frontmatter.slug) {
     const { relativeDirectory } = getNode(node.parent)
     if (path.isAbsolute(node.frontmatter.slug)) {
-      return joinPath(['/',node.frontmatter.slug])
+      return joinPath(["/", node.frontmatter.slug])
     } else {
-      return joinPath(['/', relativeDirectory, node.frontmatter.slug])
+      return joinPath(["/", relativeDirectory, node.frontmatter.slug])
     }
   } else {
     // otherwise use the filepath function from gatsby-source-filesystem
     const { relativeDirectory, name } = getNode(node.parent)
-    return joinPath([
-      '/',
-      relativeDirectory,
-      (name === indexName) ? '/' : name
-    ])
+    return joinPath(["/", relativeDirectory, name === indexName ? "/" : name])
   }
 }
 

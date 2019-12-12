@@ -10,7 +10,7 @@ function SEO({
 
   siteTitle,
   siteDescription,
-  siteAuthor
+  siteAuthor,
 }) {
   const metaDescription = description || siteDescription
 

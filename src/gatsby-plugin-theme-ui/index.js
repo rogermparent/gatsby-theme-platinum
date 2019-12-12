@@ -30,7 +30,7 @@ export default {
   },
   fonts: {
     text:
-    '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     heading: "inherit",
     monospace: "Menlo, monospace",
     siteTitle: "inherit", // Font for main site title
@@ -52,8 +52,7 @@ export default {
     text: "400",
     heading: "700",
     bold: "700",
-  }
-  ,
+  },
   lineHeights: {
     text: "1.5",
     heading: "1.125",
@@ -75,7 +74,7 @@ export default {
       fontFamily: "text",
       fontWeight: "text",
       lineHeight: "text",
-      fontSize: [1,1,2],
+      fontSize: [1, 1, 2],
     },
     a: {
       color: "primary", //Sets the default link color
@@ -90,7 +89,7 @@ export default {
       lineHeight: "heading",
       m: 0,
       mb: 2,
-      fontSize: [5,6],
+      fontSize: [5, 6],
       mt: 3,
     },
     h2: {
@@ -99,7 +98,7 @@ export default {
       lineHeight: "heading",
       m: 0,
       mb: 2,
-      fontSize: [4,5],
+      fontSize: [4, 5],
       mt: 3,
     },
     h3: {
@@ -108,7 +107,7 @@ export default {
       lineHeight: "heading",
       m: 0,
       mb: 2,
-      fontSize: [3,4],
+      fontSize: [3, 4],
       mt: 3,
     },
     h4: {
@@ -117,7 +116,7 @@ export default {
       lineHeight: "heading",
       m: 0,
       mb: 2,
-      fontSize: [2,3],
+      fontSize: [2, 3],
     },
     h5: {
       fontFamily: "heading",
@@ -143,10 +142,10 @@ export default {
     },
     blockquote: {
       bg: "muted",
-      px: [2,2,3],
-      py: [1,2,3],
-      mx: [1,1,2],
-      my: [2,2,3],
+      px: [2, 2, 3],
+      py: [1, 2, 3],
+      mx: [1, 1, 2],
+      my: [2, 2, 3],
       borderLeft: "5px solid",
       borderColor: "primary",
     },
@@ -169,29 +168,29 @@ export default {
       },
     },
     ol: {
-      pl: [3,4]
+      pl: [3, 4],
     },
     ul: {
-      pl: [3,4]
+      pl: [3, 4],
     },
     invert: {
-      backgroundColor: 'primary',
-      color: 'textWhite',
+      backgroundColor: "primary",
+      color: "textWhite",
     },
     invertLink: {
-      color: 'textWhite',
-      ':visited': {
-        color: darken('textWhite', .2),
+      color: "textWhite",
+      ":visited": {
+        color: darken("textWhite", 0.2),
       },
     },
     NavLink: {
-      variant: 'styles.invertLink',
+      variant: "styles.invertLink",
       p: 1,
     },
     Container: {
       py: 0,
       px: 3,
-      maxWidth: "maxContentWidth"
+      maxWidth: "maxContentWidth",
     },
   },
   variants: {

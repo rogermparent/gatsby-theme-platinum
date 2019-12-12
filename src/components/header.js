@@ -13,9 +13,9 @@ const SiteHeader = () => {
         }
       }
     }
-  `);
+  `)
 
-  const { title } = data.site.siteMetadata;
+  const { title } = data.site.siteMetadata
 
   return (
     <header
@@ -23,27 +23,34 @@ const SiteHeader = () => {
         bg: "primary",
         color: "background",
         fontSize: 1,
-        textAlign: 'center',
+        textAlign: "center",
       }}
       id="header"
     >
-      <Container sx={{
-        py: 2,
-        px: [2, null, 4],
-        display: 'flex',
-        flexDirection: ['column', null, 'row'],
-        justifyContent: 'space-between',
-        alignItems: 'center',
-      }}>
+      <Container
+        sx={{
+          py: 2,
+          px: [2, null, 4],
+          display: "flex",
+          flexDirection: ["column", null, "row"],
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         <Link
-          to='/'
+          to="/"
           sx={{
-            textDecoration: 'none',
-            color: 'inherit',
-            flex: '1 0 auto',
+            textDecoration: "none",
+            color: "inherit",
+            flex: "1 0 auto",
           }}
-        ><Heading>{title}</Heading></Link>
-        <p sx={{flex: '0 1 auto'}}>Shadow this header in <code>src/gatsby-theme-platinum/components/header.js</code>!</p>
+        >
+          <Heading>{title}</Heading>
+        </Link>
+        <p sx={{ flex: "0 1 auto" }}>
+          Shadow this header in{" "}
+          <code>src/gatsby-theme-platinum/components/header.js</code>!
+        </p>
       </Container>
     </header>
   )

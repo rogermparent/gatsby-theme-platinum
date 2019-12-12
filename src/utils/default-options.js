@@ -2,13 +2,13 @@ const getTemplate = require(`./get-template`)
 const makePagePath = require(`./make-page-path`)
 
 const defaultOptions = {
-  contentPath: 'content',
-  assetPath: 'assets',
+  contentPath: "content",
+  assetPath: "assets",
 
-  indexName: 'index',
+  indexName: "index",
 
-  templateDir: 'src/templates',
-  defaultTemplate: 'default',
+  templateDir: "src/templates",
+  defaultTemplate: "default",
   directoryTemplates: {},
 
   getTemplate,
@@ -17,14 +17,14 @@ const defaultOptions = {
   mdx: true,
 }
 
-const withDefaults = (options) => {
+const withDefaults = options => {
   return {
     ...defaultOptions,
-    ...options
+    ...options,
   }
 }
 
 module.exports = {
   defaultOptions,
-  withDefaults
+  withDefaults,
 }

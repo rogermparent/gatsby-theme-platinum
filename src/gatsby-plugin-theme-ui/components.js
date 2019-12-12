@@ -6,4 +6,4 @@ const components = {
   wrapper: ContainContiguous,
 }
 
-export default components;
+export default components
