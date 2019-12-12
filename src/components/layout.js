@@ -4,9 +4,9 @@ import Header from "./header"
 import Main from "./main"
 import Footer from "./footer"
 
-const DefaultLayout = ({children, description, lang, meta, keywords, title}) => {
+const DefaultLayout = ({children, ...props}) => {
   return (
-    <Layout description={description} lang={lang} meta={meta} keywords={keywords} title={title}>
+    <Layout {...props}>
       <Header />
       <Main>
         {children}
