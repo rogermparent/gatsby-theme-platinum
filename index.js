@@ -7,3 +7,4 @@ export {
 export { default as Layout } from "./src/components/layout"
 export { ContainContiguous } from "./src/utils/contiguous"
 export { default as BaseComponents } from "./src/gatsby-plugin-theme-ui/components"
+export { default as makeMdxPagePath } from "./src/utils/make-page-path"

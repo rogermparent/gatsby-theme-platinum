@@ -1,9 +1,9 @@
 const path = require('path')
-const joinPath = (arguments) => path.posix.join(
-  ...(arguments.filter(Boolean))
+const joinPath = (parts) => path.posix.join(
+  ...(parts.filter(Boolean))
 )
 
-const makePagePath = ({ node, getNode, options: {indexName} }) => {
+const makePagePath = ({ node, getNode, options: { indexName = 'index' } }) => {
   if (node.frontmatter.slug) {
     const { relativeDirectory } = getNode(node.parent)
     if (path.isAbsolute(node.frontmatter.slug)) {
