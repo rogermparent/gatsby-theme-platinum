@@ -21,7 +21,22 @@ module.exports = pluginOptions => {
     },
     {
       resolve: `gatsby-interface-content-pages`,
-      options: options
+      options: {
+        createPages: options.createPages,
+        basePath: options.basePath,
+        templateDir: options.templateDir,
+        defaultTemplate: options.defaultTemplate
+      }
+    },
+    {
+      resolve: `gatsby-transformer-mdx-content-pages`,
+      options: {
+        basePath: options.basePath,
+        indexName: options.indexName,
+        includeSubdirectories: options.includeSubdirectories,
+        makePagePath: options.makePagePath,
+        getTemplate: options.getTemplate
+      }
     }
   ];
 

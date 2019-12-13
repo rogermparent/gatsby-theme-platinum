@@ -1,6 +1,3 @@
-const getTemplate = require(`./get-template`)
-const makePagePath = require(`./make-page-path`)
-
 const defaultOptions = {
   contentPath: "content",
   assetPath: "assets",
@@ -9,10 +6,6 @@ const defaultOptions = {
 
   templateDir: "src/templates",
   defaultTemplate: "default",
-  directoryTemplates: {},
-
-  getTemplate,
-  makePagePath,
 
   mdx: true,
 }
