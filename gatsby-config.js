@@ -19,6 +19,10 @@ module.exports = pluginOptions => {
         path: options.assetPath,
       },
     },
+    {
+      resolve: `gatsby-interface-content-pages`,
+      options: options
+    }
   ];
 
   if(options.mdx === true) {
