@@ -3,6 +3,7 @@ const path = require(`path`)
 const mkdirp = require(`mkdirp`)
 const crypto = require(`crypto`)
 const debug = require(`debug`)('gatsby-theme-platinum:gatsby-node')
+const { parentPassthrough, parentResolverPassthrough } = require('gatsby-plugin-parent-resolvers')
 
 const { withDefaults } = require(`./src/utils/default-options`)
 
@@ -44,10 +45,12 @@ exports.createSchemaCustomization = ({ actions, schema }) => {
           type: `String`,
         },
         frontmatter: {
-          type: `MdxFrontmatter`,
-          resolve(source, args, context, info){
-            return context.nodeModel.getNodeById({id: source.parent}).frontmatter;
-          }
+          type: `MdxFrontmatter!`,
+          resolve: parentPassthrough()
+        },
+        body: {
+          type: `String!`,
+          resolve: parentResolverPassthrough()
         }
       },
       interfaces: [`Node`, `ContentPage`],
