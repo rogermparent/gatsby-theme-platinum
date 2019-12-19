@@ -74,10 +74,11 @@ export default {
       fontFamily: "text",
       fontWeight: "text",
       lineHeight: "text",
-      fontSize: [1, 1, 2],
+      fontSize: [3, 2],
     },
     a: {
       color: "primary", //Sets the default link color
+      fontSize: [3, 2],
       transition: "color 0.3s ease 0s",
       ":hover": {
         color: "secondary",
@@ -185,7 +186,14 @@ export default {
     },
     NavLink: {
       variant: "styles.invertLink",
-      p: 1,
+      fontSize: [3, null, 2],
+      minHeight: ["48px", 0],
+      p: 2,
+    },
+    TextLogoLink: {
+      fontSize: [4, null, 3],
+      minHeight: "48px",
+      padding: [1],
     },
     Container: {
       py: 0,
