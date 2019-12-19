@@ -83,6 +83,7 @@ module.exports = pluginOptions => {
   }
 
   plugins.push(
+    `gatsby-plugin-preload-link-crossorigin`,
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-react-helmet`,
