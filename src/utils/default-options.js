@@ -4,7 +4,7 @@ const defaultOptions = {
 
   indexName: "index",
 
-  templateDir: "src/templates",
+  templateDirectory: "src/templates",
   defaultTemplate: "default",
 
   mdx: true,

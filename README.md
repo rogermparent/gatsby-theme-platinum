@@ -54,15 +54,15 @@ Defaults to "assets".
 MDX pages with the same filename as this will have their resulting path set to their parent directory.  
 Defaults to "index".
 
-### templateDir
+### templateDirectory
 
 The directory where templates are stored, relative to your site's base directory.  
 Defaults to "src/templates"
 
 ### defaultTemplate
 
-The filename of the default template to fall back on when no other is specified, relative to `templateDir`.  
-Defaults to 'default', meaning with the default `templateDir` the default template is `src/templates/default.js`.
+The filename of the default template to fall back on when no other is specified, relative to `templateDirectory`.  
+Defaults to 'default', meaning with the default `templateDirectory` the default template is `src/templates/default.js`.
 
 ### directoryTemplates
 

@@ -2,34 +2,59 @@ const remarkSlug = require("remark-slug")
 const { withDefaults } = require("./src/utils/default-options")
 
 module.exports = pluginOptions => {
-  const options = withDefaults(pluginOptions);
+  const options = withDefaults(pluginOptions)
+
+  const {
+    contentPath,
+    assetPath,
+    transfomerMdxContentPagesOptions,
+    mdx,
+    templateDirectory,
+  } = options
 
   const plugins = [
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `pages`,
-        path: options.contentPath,
+        path: contentPath,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `assets`,
-        path: options.assetPath,
+        path: assetPath,
       },
     },
     {
-      resolve: `gatsby-interface-content-pages`,
-      options
+      resolve: `gatsby-plugin-create-content-pages`,
     },
-    {
-      resolve: `gatsby-transformer-mdx-content-pages`,
-      options
-    }
-  ];
+  ]
 
-  if(options.mdx === true) {
+  if (transfomerMdxContentPagesOptions !== false) {
+    if (Array.isArray(transfomerMdxContentPagesOptions)) {
+      for (const transformerOptions of transfomerMdxContentPagesOptions) {
+        plugins.push({
+          resolve: `gatsby-transformer-mdx-content-pages`,
+          options: {
+            templateDirectory,
+            ...transformerOptions,
+          },
+        })
+      }
+    } else {
+      plugins.push({
+        resolve: `gatsby-transformer-mdx-content-pages`,
+        options: {
+          templateDirectory,
+          ...transfomerMdxContentPagesOptions,
+        },
+      })
+    }
+  }
+
+  if (mdx === true) {
     plugins.push({
       resolve: `gatsby-plugin-mdx`,
       options: {
@@ -65,7 +90,7 @@ module.exports = pluginOptions => {
     `gatsby-transformer-yaml`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
-    `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`
   )
 
   return {

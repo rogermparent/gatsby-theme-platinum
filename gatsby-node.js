@@ -1,7 +1,7 @@
 const fs = require(`fs`)
 const path = require(`path`)
 const mkdirp = require(`mkdirp`)
-const debug = require(`debug`)('gatsby-theme-platinum:gatsby-node')
+const debug = require(`debug`)("gatsby-theme-platinum:gatsby-node")
 
 const { withDefaults } = require(`./src/utils/default-options`)
 
