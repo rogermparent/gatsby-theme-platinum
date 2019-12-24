@@ -1,9 +1,11 @@
 /** @jsx jsx */
 import { jsx, Container } from "theme-ui"
 
-export const applyOnContiguousMatches = (children, test, cb) => {
+export const applyOnContiguousMatches = (rawChildren, test, cb) => {
   const currentGroup = []
   const result = []
+
+  const children = Array.isArray(rawChildren) ? rawChildren : [rawChildren]
 
   for (const child of children) {
     if (test(child) === true) {
