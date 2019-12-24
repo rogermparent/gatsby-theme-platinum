@@ -1,8 +1,11 @@
 import { darken } from "@theme-ui/color"
+import tailwind from "@theme-ui/preset-tailwind"
 
 export default {
+  ...tailwind,
   breakpoints: ["480px", "768px", "1024px", "1440px"],
   colors: {
+    ...tailwind.colors,
     primary: "#3273dc",
     secondary: "#0c66a1",
     muted: "#f5f5f5",
@@ -54,11 +57,12 @@ export default {
     bold: "700",
   },
   lineHeights: {
+    linkMinimum: "48px", // The minimum size a link can be on mobile
     text: "1.5",
     heading: "1.125",
   },
-  spaces: ["0rem", "0.5rem", "1rem", "1.5rem", "2rem", "2.5rem", "3rem"],
   sizes: {
+    linkMinimum: "48px", // The minimum size a link can be on mobile
     minPageWidth: "300px", // Used as the min-width for body
     maxContentWidth: "720px", // Used as the max-width for containers
   },
@@ -162,7 +166,7 @@ export default {
       p: 3,
       border: "1px solid",
       borderColor: "grey",
-      borderRadius: "0.25rem",
+      borderRadius: 1,
       code: {
         color: "inherit",
         p: 0,
