@@ -1,11 +1,20 @@
-import React from "react"
-import { Layout } from "theme-ui"
+/** @jsx jsx */
+import { jsx, Layout } from "theme-ui"
 import { Global } from "@emotion/core"
 import StyleReset from "../utils/normalize-css"
 
-const BaseLayout = ({ children }) => {
+const BaseLayout = ({ children, styles }) => {
   return (
-    <Layout>
+    <Layout
+      sx={{
+        "@media print": {
+          a: {
+            color: "inherit !important",
+          },
+        },
+        ...styles,
+      }}
+    >
       <Global
         styles={theme => ({
           body: {
