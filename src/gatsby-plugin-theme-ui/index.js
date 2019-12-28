@@ -65,6 +65,7 @@ export default {
     linkMinimum: "48px", // The minimum size a link can be on mobile
     minPageWidth: "300px", // Used as the min-width for body
     maxContentWidth: "720px", // Used as the max-width for containers
+    maxPageWidth: "1040px",
   },
   styles: {
     root: {
@@ -173,10 +174,10 @@ export default {
       },
     },
     ol: {
-      pl: [3, 4],
+      pl: [4],
     },
     ul: {
-      pl: [3, 4],
+      pl: [4],
     },
     invert: {
       backgroundColor: "primary",
