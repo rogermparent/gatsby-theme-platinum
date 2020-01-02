@@ -7,7 +7,7 @@ module.exports = pluginOptions => {
   const {
     contentPath,
     assetPath,
-    transfomerMdxContentPagesOptions,
+    transformerMdxContentPagesOptions,
     mdx,
     templateDirectory,
   } = options
@@ -32,9 +32,9 @@ module.exports = pluginOptions => {
     },
   ]
 
-  if (transfomerMdxContentPagesOptions !== false) {
-    if (Array.isArray(transfomerMdxContentPagesOptions)) {
-      for (const transformerOptions of transfomerMdxContentPagesOptions) {
+  if (transformerMdxContentPagesOptions !== false) {
+    if (Array.isArray(transformerMdxContentPagesOptions)) {
+      for (const transformerOptions of transformerMdxContentPagesOptions) {
         plugins.push({
           resolve: `gatsby-transformer-mdx-content-pages`,
           options: {
@@ -48,7 +48,7 @@ module.exports = pluginOptions => {
         resolve: `gatsby-transformer-mdx-content-pages`,
         options: {
           templateDirectory,
-          ...transfomerMdxContentPagesOptions,
+          ...transformerMdxContentPagesOptions,
         },
       })
     }
