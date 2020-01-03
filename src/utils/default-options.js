@@ -1,6 +1,8 @@
 const defaultOptions = {
-  contentPath: "content",
-  assetPath: "assets",
+  contentDirectory: "content",
+  assetsDirectory: "assets",
+  contentInstanceName: "content",
+  assetsInstanceName: "assets",
 
   indexName: "index",
 
@@ -8,6 +10,10 @@ const defaultOptions = {
   defaultTemplate: "default",
 
   mdx: true,
+  sourceFilesystem: true,
+  createContentPages: true,
+  sharp: true,
+  disablePlugins: undefined,
 }
 
 const withDefaults = options => {

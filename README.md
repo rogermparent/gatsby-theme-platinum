@@ -7,7 +7,9 @@ Platinum is the successor to my previous theme, `gatsby-theme-mdx-pages`. It's f
 This theme has three main aims: 
 
 1. Programmatically make pages from MDX files, using frontmatter and directories to define templates.
+
 2. Implement `theme-ui`, a quality styling library that synergizes incredibly with MDX.
+
 3. Provide some optional components that are generally usable enough for most any website.
 
 Everything else is left up to the descendant project, whether directly or through other plugins.
@@ -28,70 +30,93 @@ gatsby develop
 
 ## Templates
 
-Platinum uses its own method of resolving template components, and as such needs to be treated differently from something like shadowing.
+Platinum uses
+[gatsby-transformer-mdx-content-pages](https://github.com/rogermparent/gatsby-transformer-mdx-content-pages)
+to resolve template components, which needs to be treated differently from
+something like shadowing.
 
-First and most importantly, a default template **must** be present in the base gatsby project. This theme doesn't automatically assign an internal template when not even a default is present.  
-While providing an automatic default is possible, it leads to a minor cosmetic bug where that default template's graphql query throws out a warning despite the theme being used as intended.
+First and most importantly, a default template **must** be present in the
+template directory of the base gatsby project. This theme doesn't automatically
+assign an internal template when not even a default is present.
 
-Platinum does export a layout with a shadowable header and footer, which is usable enough for most sites. This layout's header and footer can be overridden with shadowing, so you can take advantage of the boilerplate-handling features of the Layout while using any header and footer you'd like. Check out this theme's starter for an example of how to use the exported layout.
+While providing an automatic default is possible, it leads to a minor cosmetic
+bug where that default template's graphql query throws out a warning despite the
+theme being used as intended.
 
-Of course, you can also totally skip the exported layout completely to use your own.
+Platinum does export a layout with a shadowable header and footer, which is
+usable enough for most sites. This layout's header and footer can be overridden
+with shadowing, so you can take advantage of the boilerplate-handling features
+of the Layout while using any header and footer you'd like. Check out this
+theme's starter for an example of how to use the exported layout.
+
+Of course, you can also totally skip the exported layout completely to use your
+own.
 
 ## Theme Options
 
-### contentPath
+### contentDirectory: String
 
 The directory where MDX content pages reside, relative to your site's base directory.  
+If set to false, disables this instance of `gatsby-source-filesystem`
+
 Defaults to "content".
 
-### assetPath
+### assetsDirectory: String
 
 The directory where static assets reside, relative to your site's base directory.  
+If set to false, disables this instance of `gatsby-source-filesystem`
+
 Defaults to "assets".
 
-### indexName
+### contentInstanceName / assetsInstanceName: String
 
-MDX pages with the same filename as this will have their resulting path set to their parent directory.  
-Defaults to "index".
+These are used as the `name` setting in the child `gatsby-source-filesystem`
+instances.
 
-### templateDirectory
+It's mostly for a quick change in case of collision with pre-existing instances.
 
-The directory where templates are stored, relative to your site's base directory.  
-Defaults to "src/templates"
+Defaults to "content" and "assets", respectively.
 
-### defaultTemplate
+### mdx: Object | Boolean = true
 
-The filename of the default template to fall back on when no other is specified, relative to `templateDirectory`.  
-Defaults to 'default', meaning with the default `templateDirectory` the default template is `src/templates/default.js`.
+This option allows you to manipulate the child instance of `gatsby-plugin-mdx`
 
-### directoryTemplates
+- When `false`, the plugin is disabled.
+- When `true` or not present, a preconfigured instance is added.
+- When an object, it will be merged into the preconfigured instance.
 
-An object whose keys correspond to a directory relative to `contentDir`, and values correspond to template names.
+### Plugin Toggles: Boolean = true
 
-MDX files that have a relative directory matching one of these keys, but without a template specified in frontmatter, will use the corresponding value as their default template.
+#### sourceFilesystem = gatsby-source-filesystem
+#### createContentPages = gatsby-plugin-create-content-pages
+#### sitemap = gatsby-plugin-sitemap
+#### sharp = gatsby-plugin-sharp
 
-For example, a `directoryTemplates` object of `{ posts: 'post' }` will, with default settings, make MDX files located in `content/posts` use the component at `src/templates/post.js` as a template.
+These options are here to turn off certain plugins if you're either using your
+own configured instances or alternatives to them.
 
-Defaults to an empty object.
+### disablePlugins: Array<String>
 
-### mdx
+While there should be a dedicated setting for any plugins worth disabling, this option is offered if one you need disabled wasn't included.
 
-If set to false, skips adding the instance of `gatsby-plugin-mdx` to your base project.  
-Use this if you want to use a different set of options for the plugin, or another theme adds it.
+Any plugins whose name matches a string in this array will be excluded from the theme.  
+Disabling a vital plugin without a replacement can break the theme, so be careful!
 
-### getTemplate and makePagePath
+### transformerMdxContentPagesOptions: Object | Array<Object> | false
 
-These functions determine the template and resulting path for each MDX file's page, respectively.  
-Both functions' signatures are `({node, getNode, options})`, using the object spread syntax for arguments.
+The object in this option is passed through as the options for the child
+instance of `gatsby-transformer-mdx-content-pages`,
+allowing for more granular control of the plugin. You can find the full options
+in the plugin's README.
 
-`node` is the MDX node, `getNode` is a dependency injection of Gatsby's function of the same name so this function can access nodes related to the MDX node, like the File it comes from.  
-`options` is the whole options object provided to this theme. The default functions use this to access `directoryTemplates` and `indexName`, but the whole thing is provided so other implementations can use their own configuration schemas.
+If you provide an array of objects, an instance will be made for each.
+
+If the option is `false`, no instance of the plugin will be added.
 
 ## Roadmap
 
 While this theme is currently usable, it has a lot of room for improvement. Here's a non-exhaustive list of known areas:
 
 - Writing unit tests (I'm so sorry! Skipping them is such a bad habit!)
-- Better default template resolution (for example, child directories aren't recognized by `directoryTemplates`)
 - Less bland initial styles
 - Better documentation

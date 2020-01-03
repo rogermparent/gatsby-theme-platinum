@@ -1,61 +1,97 @@
 const remarkSlug = require("remark-slug")
 const { withDefaults } = require("./src/utils/default-options")
 
+const getPluginName = plugin =>
+  typeof plugin === "object" ? plugin.resolve : plugin
+
 module.exports = pluginOptions => {
   const options = withDefaults(pluginOptions)
 
+  const plugins = []
+
   const {
-    contentPath,
-    assetPath,
-    transformerMdxContentPagesOptions,
+    // Plugin toggles
     mdx,
+    sourceFilesystem,
+    createContentPages,
+    sharp,
+    disablePlugins,
+
+    // FS source options
+    contentInstanceName,
+    assetsInstanceName,
+    contentDirectory,
+    assetsDirectory,
+
+    // transformer-mdx-content-pages options
     templateDirectory,
+    defaultTemplate,
+    transformerMdxContentPagesOptions,
   } = options
 
-  const plugins = [
-    {
+  if (contentDirectory) {
+    plugins.push({
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `pages`,
-        path: contentPath,
+        name: contentInstanceName,
+        path: contentDirectory,
       },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `assets`,
-        path: assetPath,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-create-content-pages`,
-    },
-  ]
+    })
+  }
 
+  if (assetsDirectory) {
+    plugins.push({
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: assetsInstanceName,
+        path: assetsDirectory,
+      },
+    })
+  }
+
+  if (createContentPages) {
+    plugins.push(`gatsby-plugin-create-content-pages`)
+  }
+
+  // Skip transformer instance if the option is set to false
   if (transformerMdxContentPagesOptions !== false) {
     if (Array.isArray(transformerMdxContentPagesOptions)) {
+      // Add multiple instances if the option is an array
       for (const transformerOptions of transformerMdxContentPagesOptions) {
         plugins.push({
           resolve: `gatsby-transformer-mdx-content-pages`,
           options: {
             templateDirectory,
+            defaultTemplate,
             ...transformerOptions,
           },
         })
       }
-    } else {
+    } else if (typeof transformerMdxContentPagesOptions === "object") {
+      // For an object, add an instance of the plugin with it as options
       plugins.push({
         resolve: `gatsby-transformer-mdx-content-pages`,
         options: {
           templateDirectory,
+          defaultTemplate,
           ...transformerMdxContentPagesOptions,
+        },
+      })
+    } else {
+      // For all other options, add an instance with default settings
+      // Generally this means undefined, but it's also a catch-all for anything else
+      plugins.push({
+        resolve: `gatsby-transformer-mdx-content-pages`,
+        options: {
+          templateDirectory,
+          defaultTemplate,
         },
       })
     }
   }
 
-  if (mdx === true) {
-    plugins.push({
+  if (mdx !== false) {
+    const mdxPlugin = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.md`, `.mdx`],
@@ -68,33 +104,35 @@ module.exports = pluginOptions => {
               withWebp: true,
             },
           },
-          {
-            resolve: `gatsby-remark-copy-linked-files`,
-            options: {
-              destinationDir: `content/assets`,
-            },
-          },
-          { resolve: `gatsby-remark-smartypants` },
         ],
         remarkPlugins: [remarkSlug],
         plugins: [`gatsby-remark-images`],
       },
-    })
+    }
+
+    plugins.push(
+      typeof mdx === "object"
+        ? {
+            ...mdxPlugin,
+            ...mdx,
+          }
+        : mdxPlugin
+    )
   }
 
   plugins.push(
-    `gatsby-plugin-preload-link-crossorigin`,
-    `gatsby-plugin-sitemap`,
-    `gatsby-plugin-robots-txt`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-sharp`,
-    `gatsby-transformer-yaml`,
-    `gatsby-plugin-sharp`,
     `gatsby-plugin-theme-ui`,
-    `gatsby-plugin-offline`
+    `gatsby-transformer-sharp`
   )
 
+  if (sharp) plugins.push(`gatsby-plugin-sharp`)
+
+  const filteredPlugins = disablePlugins
+    ? plugins.filter(plugin => !disablePlugins.includes(getPluginName(plugin)))
+    : plugins
+
   return {
-    plugins,
+    plugins: filteredPlugins,
   }
 }

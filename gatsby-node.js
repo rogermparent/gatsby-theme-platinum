@@ -8,11 +8,11 @@ const { withDefaults } = require(`./src/utils/default-options`)
 // Ensure that the content and asset directories exist
 exports.onPreBootstrap = ({ store }, themeOptions) => {
   const programDir = store.getState().program.directory
-  const { contentPath, assetPath } = withDefaults(themeOptions)
+  const { contentDirectory, assetsDirectory } = withDefaults(themeOptions)
 
   const dirs = [
-    path.join(programDir, contentPath),
-    path.join(programDir, assetPath),
+    path.join(programDir, contentDirectory),
+    path.join(programDir, assetsDirectory),
   ]
 
   dirs.forEach(dir => {
