@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx, Container } from "theme-ui"
+import { jsx } from "theme-ui"
+import { Container } from "@theme-ui/components"
 
 export const applyOnContiguousMatches = (rawChildren, test, cb) => {
   const currentGroup = []
@@ -33,7 +34,7 @@ export const applyOnContiguousMatches = (rawChildren, test, cb) => {
   return result
 }
 
-export const WrapContiguous = ({ children, Wrapper }) => {
+export const WrapContiguous = Wrapper => ({ children }) => {
   let lastKey = 1
   return applyOnContiguousMatches(
     children,
@@ -42,6 +43,4 @@ export const WrapContiguous = ({ children, Wrapper }) => {
   )
 }
 
-export const ContainContiguous = ({ children }) => (
-  <WrapContiguous Wrapper={Container}>{children}</WrapContiguous>
-)
+export const ContainContiguous = WrapContiguous(Container)
