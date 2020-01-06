@@ -1,7 +1,7 @@
 {
   "name": "gatsby-theme-platinum",
   "description": "A minimal Gatsby theme that implements Theme UI and MDX page creation.",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "author": "RMP <rogermparent@gmail.com>",
   "dependencies": {
     "@emotion/core": "^10.0.22",
