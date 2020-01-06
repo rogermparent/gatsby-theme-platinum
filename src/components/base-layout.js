@@ -1,31 +1,27 @@
-/** @jsx jsx */
-import { jsx, Layout } from "theme-ui"
-import { Global } from "@emotion/core"
+import React from "react"
+import { Styled } from "theme-ui"
+import { Flex } from "@theme-ui/components"
 import StyleReset from "../utils/normalize-css"
 
-const BaseLayout = ({ children, styles }) => {
-  return (
-    <Layout
+const BaseLayout = ({ children, className }) => (
+  <Styled.root>
+    <StyleReset />
+    <Flex
       sx={{
+        minWidth: "minPageWidth",
+        flexFlow: "column nowrap",
+        minHeight: "100vh",
         "@media print": {
           a: {
             color: "inherit !important",
           },
         },
-        ...styles,
       }}
+      className={className}
     >
-      <Global
-        styles={theme => ({
-          body: {
-            minWidth: theme.sizes.minPageWidth,
-          },
-        })}
-      />
-      <StyleReset />
       {children}
-    </Layout>
-  )
-}
+    </Flex>
+  </Styled.root>
+)
 
 export default BaseLayout

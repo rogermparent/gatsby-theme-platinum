@@ -4,12 +4,15 @@ import Header from "./header"
 import Main from "./main"
 import Footer from "./footer"
 
-const DefaultLayout = ({ children, ...props }) => {
+const defaultUnlessFalse = (defaultItem, item) =>
+  item === false ? undefined : item || defaultItem
+
+const DefaultLayout = ({ children, header, footer, ...props }) => {
   return (
     <Layout {...props}>
-      <Header />
+      {defaultUnlessFalse(<Header />, header)}
       <Main>{children}</Main>
-      <Footer />
+      {defaultUnlessFalse(<Footer />, footer)}
     </Layout>
   )
 }

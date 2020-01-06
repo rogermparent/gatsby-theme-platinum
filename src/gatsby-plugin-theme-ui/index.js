@@ -32,7 +32,7 @@ export default {
     },
   },
   fonts: {
-    text:
+    body:
       '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
     heading: "inherit",
     monospace: "Menlo, monospace",
@@ -56,6 +56,21 @@ export default {
     heading: "700",
     bold: "700",
   },
+  layout: {
+    main: {
+      flex: "1 1 auto",
+      width: "100%",
+      mt: 3,
+      mb: 4,
+      mx: 0,
+      px: 0,
+    },
+    container: {
+      py: 0,
+      px: 3,
+      maxWidth: "maxContentWidth",
+    },
+  },
   lineHeights: {
     linkMinimum: "48px", // The minimum size a link can be on mobile
     text: "1.5",
@@ -71,12 +86,7 @@ export default {
     root: {
       fontFamily: "body",
       color: "text",
-      bg: "background",
-    },
-    Layout: {
       backgroundColor: "background",
-      color: "text",
-      fontFamily: "text",
       fontWeight: "text",
       lineHeight: "text",
       fontSize: [3, 2],
@@ -199,11 +209,6 @@ export default {
       fontSize: [4, null, 3],
       minHeight: "48px",
       padding: [1],
-    },
-    Container: {
-      py: 0,
-      px: 3,
-      maxWidth: "maxContentWidth",
     },
   },
   variants: {

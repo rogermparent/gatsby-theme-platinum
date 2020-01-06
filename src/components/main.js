@@ -1,22 +1,6 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
+import React from "react"
+import { Box } from "@theme-ui/components"
 
-const SiteMain = props => {
-  return (
-    <main
-      sx={{
-        flex: "1 1 auto",
-        width: "100%",
-        mt: 3,
-        mb: 4,
-        mx: 0,
-        px: 0,
-        variant: "variants.main",
-      }}
-    >
-      {props.children}
-    </main>
-  )
-}
+const SiteMain = props => <Box as="main" variant="layout.main" {...props} />
 
 export default SiteMain

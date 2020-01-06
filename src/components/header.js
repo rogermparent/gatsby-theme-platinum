@@ -1,6 +1,7 @@
 // This is a placeholder for latent shadowing in sibling themes
 /** @jsx jsx */
-import { jsx, Container } from "theme-ui"
+import { jsx } from "theme-ui"
+import { Container } from "@theme-ui/components"
 import { Heading } from "@theme-ui/components"
 import { Link, useStaticQuery, graphql } from "gatsby"
 
