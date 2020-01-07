@@ -38,7 +38,7 @@ export const WrapContiguous = Wrapper => ({ children }) => {
   let lastKey = 1
   return applyOnContiguousMatches(
     children,
-    child => child.props.fullWidth !== "true",
+    child => child && (child.props.fullWidth !== "true"),
     matches => <Wrapper key={`contained-group-${lastKey++}`}>{matches}</Wrapper>
   )
 }
