@@ -30,7 +30,7 @@
     "theme-ui": "^0.2.49"
   },
   "devDependencies": {
-    "gatsby": "^2.18.5",
+    "gatsby": "^2.18.18",
     "prettier": "^1.19.1",
     "react": "^16.11.0",
     "react-dom": "^16.11.0"
