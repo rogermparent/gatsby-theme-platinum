@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from "theme-ui"
+import React from "react"
 import { Container } from "@theme-ui/components"
 
 export const applyOnContiguousMatches = (rawChildren, test, cb) => {
@@ -38,7 +37,7 @@ export const WrapContiguous = Wrapper => ({ children }) => {
   let lastKey = 1
   return applyOnContiguousMatches(
     children,
-    child => child && (child.props.fullWidth !== "true"),
+    child => child && child.props.fullWidth !== "true",
     matches => <Wrapper key={`contained-group-${lastKey++}`}>{matches}</Wrapper>
   )
 }
