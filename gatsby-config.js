@@ -134,7 +134,7 @@ module.exports = pluginOptions => {
 
   return {
     siteMetadata: {
-      title: "My Platinum Site"
+      title: "My Platinum Site",
     },
     plugins: filteredPlugins,
   }
